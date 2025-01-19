@@ -36,14 +36,15 @@ export class DataService {
               let completedCourses = userData['completed_courses'];
 
               if (!completedCourses) {
-                completedCourses = []; 
+                completedCourses = [];
                 await updateDoc(userDocRef, { completed_courses: completedCourses });
-                console.log("Created 'test' field for user:", docSnap.id);
+                console.log("Created 'completed_courses' field for user:", docSnap.id);
               }
 
               return completedCourses;
             } else {
-              console.error('No such document!');
+              await setDoc(userDocRef, { completed_courses: [] });
+              console.log("Created new user document with 'completed_courses' field:", userDocRef.id);
               return [];
             }
           })
