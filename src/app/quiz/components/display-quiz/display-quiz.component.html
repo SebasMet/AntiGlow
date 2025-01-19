@@ -1,0 +1,13 @@
+<div class="h-full flex flex-col justify-around p-10">
+  <div>
+    <h1 class="text-center text-3xl font-mono">Question:</h1>
+    <h2 class="text-center mt-10 text-xl font-mono"> {{question}}</h2>
+  </div>
+  <div>
+    <div *ngFor="let option of options" class="outline my-5 mx-44">
+        <button (click)="checkAnswer(option)" class="w-full hover:bg-slate-400">
+            <h1 class="font-mono">{{ option.option }}</h1>
+        </button>
+    </div>
+  </div>
+</div>

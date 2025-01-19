@@ -1,0 +1,42 @@
+<div class="h-[calc(100vh-4rem)] w-screen flex items-center justify-center">
+  <div class="w-[75%] h-[80%] bg-slate-200 shadow-2xl p-10 flex items-center">
+    <button
+      *ngIf="!showQuiz"
+      class="h-40 w-12 bg-slate-300 outline outline-1 rounded-lg"
+      (click)="previousSection()"
+    >
+      <mat-icon class="h-10 w-10">chevron_left</mat-icon>
+    </button>
+
+    <div class="flex-grow h-full mx-7 flex flex-col">
+      <h1 *ngIf="!showQuiz" class="text-center text-3xl mb-3 font-semibold">
+      {{ currentSection + 1 }} / {{ this.course.lessons.length }}
+      </h1>
+      <h1 *ngIf="showQuiz" class="text-center text-3xl mb-3 font-semibold">
+      {{ currentQuestion + 1 }} / {{ this.course.quiz.length }}
+      </h1>
+      <div class="outline outline-1 rounded-lg flex-grow min-h-0  overflow-scroll"> 
+        <app-display-learning-material
+          *ngIf="!showQuiz"
+          [material]="this.course.lessons[currentSection].material"
+          [image]="this.course.lessons[currentSection].image"
+        ></app-display-learning-material>
+        <app-display-quiz
+          *ngIf="showQuiz"
+          (correctAnswerEvent)="onCorrectAnswer()"
+          [question]="this.course.quiz[currentQuestion].question"
+          [options]="this.course.quiz[currentQuestion].options"
+        ></app-display-quiz>
+      </div>
+        </div>
+    <button
+      *ngIf="!showQuiz"
+      class="h-40 w-12 bg-slate-300 outline outline-1 rounded-lg"
+      (click)="nextSection()"
+    >
+      <mat-icon class="h-10 w-10">chevron_right</mat-icon>
+    </button>
+  </div>
+</div>
+
+<!-- WORK WITH TEMPLATES QUIZ MODE AND MATERIAL MODE -->

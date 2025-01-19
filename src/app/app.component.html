@@ -1,0 +1,13 @@
+<nav class="outline-2 top-0 w-full h-16 bg-indigo-600 flex justify-center" >
+  <div class=" w-[1000px] mx-10 flex place-items-center justify-between">
+    <button (click)="navigateToHome()" class="text-white text-3xl"> Anti-Glow</button>
+    <div>
+        <button (click)="navigateToOverview()" class="text-white pr-3"> Overview</button>
+        <button (click)="navigateToLogin()" class="text-white pr-3" [disabled]="this.user"> {{this.user ? this.user.email : "Log in"}}</button>
+        <button (click)="logout()" class="text-white pr-3"> Log out </button>
+      </div>
+
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

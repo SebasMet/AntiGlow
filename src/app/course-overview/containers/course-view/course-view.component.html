@@ -1,0 +1,9 @@
+<div class="h-[calc(100vh-4rem)] w-screen flex items-center justify-center">
+  <div
+    class="w-[75%] h-[75%] outline bg-slate-200 shadow-2xl p-10 flex items-center justify-center"
+  >
+    <div class="w-[70%] gap-y-3 flex flex-col">
+      <app-course-list-item *ngFor="let course of courses" [coverImage]="course.courseCoverImage" [icon]="isCourseCompleted(course.courseId) ?'check_box_outline' :'check_box_outline_blank'" [courseId]="course.courseId" [courseTitle]="course.title" [ngClass]="isCourseCompleted(course.courseId) ? 'outline outline-2 rounded-xl outline-green-500' : ''"></app-course-list-item>
+    </div>
+  </div>
+</div>
